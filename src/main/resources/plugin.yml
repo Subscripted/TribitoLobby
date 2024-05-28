@@ -1,0 +1,8 @@
+name: TribitoLobby
+version: '${version}'
+main: dev.subscripted.tribitolobby.Main
+api-version: '1.20'
+commands:
+  baumodus:
+    description: "Aktiviere oder deaktiviere den Baumodus."
+    usage: "/baumodus <an|aus>"
