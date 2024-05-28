@@ -45,9 +45,9 @@ public class JoinLeave implements Listener {
             ItemBuilder playerHiderActive = new ItemBuilder(Material.RED_DYE).setDisplayName(LobbyMenusText.PLAYERHIDER_ACTIVE_NAME.getText());
 
             if (playerHiderManager.hasPlayerHiderActive(player)) {
-                player.getInventory().setItem(0, playerHiderInactive.build());
-            } else {
                 player.getInventory().setItem(0, playerHiderActive.build());
+            } else {
+                player.getInventory().setItem(0, playerHiderInactive.build());
             }
         }
     }
