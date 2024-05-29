@@ -5,6 +5,7 @@ import dev.subscripted.tribitolobby.utils.ItemBuilder;
 import dev.subscripted.tribitolobby.utils.gui.LobbyMenus;
 import dev.subscripted.tribitolobby.utils.gui.LobbyMenusText;
 import dev.subscripted.tribitolobby.utils.gui.items.PlayerHiderManager;
+import dev.subscripted.tribitolobby.utils.scoreboard.PlayerScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -18,11 +19,13 @@ public class JoinLeave implements Listener {
     private final LobbyMenus lobbyMenus;
     private final BuildModeHandler buildModeHandler;
     private final PlayerHiderManager playerHiderManager;
+    private final PlayerScoreboard playerScoreboard;
 
-    public JoinLeave(LobbyMenus lobbyMenus, BuildModeHandler buildModeHandler, PlayerHiderManager playerHiderManager) {
+    public JoinLeave(LobbyMenus lobbyMenus, BuildModeHandler buildModeHandler, PlayerHiderManager playerHiderManager, PlayerScoreboard playerScoreboard) {
         this.lobbyMenus = lobbyMenus;
         this.buildModeHandler = buildModeHandler;
         this.playerHiderManager = playerHiderManager;
+        this.playerScoreboard = playerScoreboard;
     }
 
     @EventHandler

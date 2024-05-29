@@ -24,10 +24,12 @@ public class BuildModeHandler {
     }
 
     public void addPlayerToBuildMode(Player player) {
+        if (!isInBuildMode(player)) {
+            player.getInventory().clear();
+        }
         player.sendMessage(prefix + "§aDu bist nun im Baumodus.");
         playersInBuildMode.add(player.getUniqueId());
         soundLibrary.playLibrarySound(player, SoundLibrary.CustomSound.ACTIVATED, 1f, 3f);
-        player.getInventory().clear();
     }
 
     public void removePlayerFromBuildMode(Player player) {
