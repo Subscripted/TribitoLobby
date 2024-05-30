@@ -1,5 +1,6 @@
 package dev.subscripted.tribitolobby.events;
 
+import dev.subscripted.tribitolobby.Main;
 import dev.subscripted.tribitolobby.events.buildmode.BuildModeHandler;
 import dev.subscripted.tribitolobby.utils.ItemBuilder;
 import dev.subscripted.tribitolobby.utils.gui.LobbyMenus;
@@ -31,6 +32,7 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        playerScoreboard.setPlayerScoreboard(player);
         String joinMessage = "§7[§a+§7] " + player.getName();
         event.setJoinMessage(null);
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
@@ -49,6 +51,9 @@ public class JoinLeave implements Listener {
 
             if (playerHiderManager.hasPlayerHiderActive(player)) {
                 player.getInventory().setItem(0, playerHiderActive.build());
+                for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
+                    player.hidePlayer(Main.getInstance(), otherPlayer);
+                }
             } else {
                 player.getInventory().setItem(0, playerHiderInactive.build());
             }

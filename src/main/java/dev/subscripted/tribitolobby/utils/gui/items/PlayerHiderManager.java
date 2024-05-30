@@ -15,7 +15,6 @@ public class PlayerHiderManager {
     public boolean hasPlayerHiderActive(Player player) {
         return lobbyHiderActive.contains(player.getUniqueId());
     }
-
     public void deactivatePlayerHider(Player player) {
         lobbyHiderActive.remove(player.getUniqueId());
         for (Player otherPlayer : Bukkit.getOnlinePlayers()) {
