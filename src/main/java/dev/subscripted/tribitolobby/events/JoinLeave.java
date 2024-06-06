@@ -3,6 +3,7 @@ package dev.subscripted.tribitolobby.events;
 import dev.subscripted.tribitolobby.Main;
 import dev.subscripted.tribitolobby.events.buildmode.BuildModeHandler;
 import dev.subscripted.tribitolobby.utils.ItemBuilder;
+import dev.subscripted.tribitolobby.utils.bossbar.BossbarManager;
 import dev.subscripted.tribitolobby.utils.gui.LobbyMenus;
 import dev.subscripted.tribitolobby.utils.gui.LobbyMenusText;
 import dev.subscripted.tribitolobby.utils.gui.items.PlayerHiderManager;
@@ -21,17 +22,20 @@ public class JoinLeave implements Listener {
     private final BuildModeHandler buildModeHandler;
     private final PlayerHiderManager playerHiderManager;
     private final PlayerScoreboard playerScoreboard;
+    private final BossbarManager bossbarManager;
 
-    public JoinLeave(LobbyMenus lobbyMenus, BuildModeHandler buildModeHandler, PlayerHiderManager playerHiderManager, PlayerScoreboard playerScoreboard) {
+    public JoinLeave(LobbyMenus lobbyMenus, BuildModeHandler buildModeHandler, PlayerHiderManager playerHiderManager, PlayerScoreboard playerScoreboard, BossbarManager bossbarManager) {
         this.lobbyMenus = lobbyMenus;
         this.buildModeHandler = buildModeHandler;
         this.playerHiderManager = playerHiderManager;
         this.playerScoreboard = playerScoreboard;
+        this.bossbarManager = bossbarManager;
     }
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
+        bossbarManager.addPlayerToBossbar(player);
         playerScoreboard.setPlayerScoreboard(player);
         String joinMessage = "§7[§a+§7] " + player.getName();
         event.setJoinMessage(null);
@@ -63,6 +67,7 @@ public class JoinLeave implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
+        bossbarManager.removePlayerFromBossbar(player);
         String quitMessage = "§7[§c-§7] " + player.getName();
         event.setQuitMessage(null);
         for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {

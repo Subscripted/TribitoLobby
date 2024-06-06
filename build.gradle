@@ -29,6 +29,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
     compileOnly 'com.mojang:authlib:4.0.43'
+    compileOnly 'net.luckperms:api:5.4'
 }
 
 def targetJavaVersion = 17

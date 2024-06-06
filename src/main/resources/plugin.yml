@@ -2,6 +2,9 @@ name: TribitoLobby
 version: '${version}'
 main: dev.subscripted.tribitolobby.Main
 api-version: '1.20'
+depend: [ LuckPerms ]
+description: Introducing the cornerstone of the Tribito.de network - our lobby plugin. Engineered to facilitate all lobby interactions, it serves as the nexus for all activities within our network's vibrant lobby environment.
+author: Subscripted
 commands:
   baumodus:
     description: "Aktiviere oder deaktiviere den Baumodus."
